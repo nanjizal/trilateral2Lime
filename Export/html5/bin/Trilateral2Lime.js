@@ -872,9 +872,9 @@ ApplicationMain.create = function(config) {
 	var app = new Main();
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","3");
+		_this.setReserved("build","4");
 	} else {
-		_this.h["build"] = "3";
+		_this.h["build"] = "4";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -1591,6 +1591,7 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 		var this3 = this.textPos;
 		var texs = this3.subarray(2,geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this3) * 6 + 2);
 		this.indices = this.createIndices();
+		haxe_Log.trace("indices length " + Std.string(this.indices),{ fileName : "Source/Main.hx", lineNumber : 286, className : "Main", methodName : "uploadVectors"});
 		var gl = this.gl;
 		var indices = this.indices;
 		var indexBuffer = gl.createBuffer();
@@ -1932,7 +1933,6 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 		if(k == 97) {
 			this.swapAxisModel();
 		}
-		haxe_Log.trace(this.axisModel,{ fileName : "Source/Main.hx", lineNumber : 385, className : "Main", methodName : "onKeyDown"});
 	}
 	,swapAxisModel: function() {
 		this.sceneTransform = !this.sceneTransform;
@@ -31306,7 +31306,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 467842;
+	this.version = 421277;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";

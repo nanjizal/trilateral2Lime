@@ -283,6 +283,7 @@ class Main extends Application {
         colors   =  cast cols.getArray();
         var texs = cast textPos.getArray();
         indices  =  createIndices();
+        trace( 'indices length ' + indices );
         passIndicesToShader( gl, indices );
         uploadDataToBuffers( gl, glProgram, vertices, colors );
     }
@@ -382,7 +383,7 @@ class Main extends Application {
         if( k == KeyCode.A ){
             swapAxisModel();
         }
-        trace( axisModel );
+        //trace( axisModel );
     }
     var sceneModel: Axis3; // set to 
     var axisModel               = new Axis3();
