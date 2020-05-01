@@ -178,7 +178,7 @@ class Main extends Application {
                 gridLines.draw( 10, 0x0396FB00, 0xF096FBF3 );
                 verts.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.2 ) );
                 var die     = new Die( pen );
-                startEnd  = die.create( stageRadius/2, stageRadius/2 );
+                startEnd  = die.create( stageRadius, stageRadius );
             default:
         }
         start = true;
