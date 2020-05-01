@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Trilateral2Lime" package="net.nanjizal.trilateral2lime" version="1.0.0" company="Nanjizal" />
+	<app main="Main" path="Export" file="Trilateral2Lime" />
+	
+	<source path="Source" />
+	
+	<haxelib name="lime" />
+    <haxelib name="trilateral2" />
+    <haxelib name="geom" />
+    <haxelib name="htmlHelper" />
+    <haxelib name="fracs" />
+    <haxelib name="pallette" />
+    <haxelib name="justPath" />
+    <haxelib name="hxGeomAlgo" />
+    <haxelib name="poly2trihx" />
+    <haxelib name="hxPolyK" />
+	<assets path="Assets" rename="assets" />
+	
+</project>
