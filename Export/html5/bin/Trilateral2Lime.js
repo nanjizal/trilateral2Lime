@@ -872,9 +872,9 @@ ApplicationMain.create = function(config) {
 	var app = new Main();
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","17");
+		_this.setReserved("build","3");
 	} else {
-		_this.h["build"] = "17";
+		_this.h["build"] = "3";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -1361,7 +1361,9 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 			var this5 = new geom_structure_Mat4x3(this3.a * s.a + this3.b * s.e + this3.c * s.i,this3.a * s.b + this3.b * s.f + this3.c * s.j,this3.a * s.c + this3.b * s.g + this3.c * s.k,this3.a * s.d + this3.b * s.h + this3.c * s.l + this3.d,this3.e * s.a + this3.f * s.e + this3.g * s.i,this3.e * s.b + this3.f * s.f + this3.g * s.j,this3.e * s.c + this3.f * s.g + this3.g * s.k,this3.e * s.d + this3.f * s.h + this3.g * s.l + this3.h,this3.i * s.a + this3.j * s.e + this3.k * s.i,this3.i * s.b + this3.j * s.f + this3.k * s.j,this3.i * s.c + this3.j * s.g + this3.k * s.k,this3.i * s.d + this3.j * s.h + this3.k * s.l + this3.l);
 			geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(tmp5,this5);
 			var die = new trilateral2Lime_Die(this.pen);
-			this.startEnd = die.create(300.,300.);
+			this.startEnd = die.create(600,600);
+			this.sceneModel = this.axisModel;
+			this.uploadVectors();
 			break;
 		default:
 		}
@@ -1418,7 +1420,6 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 		m.l = t.z;
 		var trans = m;
 		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(this.verts,trans,this.startEnd.start,this.startEnd.end);
-		this.uploadVectors();
 	}
 	,render: function(context) {
 		if(!this.start) {
@@ -1581,71 +1582,6 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 		var this6 = this5;
 		var this7 = new geom_structure_Mat4x3(this6.a * v.x,this6.b,this6.c,this6.d,this6.e,this6.f * v.y,this6.g,this6.h,this6.i,this6.j,this6.k * v.z,this6.l);
 		return this7;
-	}
-	,reloadVectors: function() {
-		var this1 = this.verts;
-		this.vertices = this1.subarray(2,geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this1) * 9 + 2);
-		var this2 = this.cols;
-		this.colors = this2.subarray(2,geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this2) * 4 + 2);
-		var this3 = this.textPos;
-		var texs = this3.subarray(2,geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this3) * 6 + 2);
-		var this4 = new Float32Array(Main.largeEnough + 2);
-		var this5 = this4;
-		this5[0] = 0.;
-		this5[1] = 0.;
-		var this6 = this5;
-		var this7 = this6;
-		this.verts = this7;
-		var this8 = new Float32Array(Main.largeEnough + 2);
-		var this9 = this8;
-		this9[0] = 0.;
-		this9[1] = 0.;
-		var this10 = this9;
-		var this11 = this10;
-		this.cols = this11;
-		var gl = this.gl;
-		var indices = this.indices;
-		var indexBuffer = gl.createBuffer();
-		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);
-		lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl,gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);
-		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,null);
-		var gl1 = this.gl;
-		var program = this.glProgram;
-		var vertices = this.vertices;
-		var colors = this.colors;
-		var texture = null;
-		var name = Main.posName;
-		var number = gl1.FLOAT;
-		var buffer = gl1.createBuffer();
-		var arrBuffer = gl1.ARRAY_BUFFER;
-		gl1.bindBuffer(arrBuffer,buffer);
-		lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl1,arrBuffer,vertices,gl1.STATIC_DRAW);
-		var flo = gl1.getAttribLocation(program,name);
-		gl1.vertexAttribPointer(flo,3,number,false,0,0);
-		gl1.enableVertexAttribArray(flo);
-		gl1.bindBuffer(arrBuffer,null);
-		var name1 = Main.colorName;
-		var number1 = gl1.FLOAT;
-		var buffer1 = gl1.createBuffer();
-		var arrBuffer1 = gl1.ARRAY_BUFFER;
-		gl1.bindBuffer(arrBuffer1,buffer1);
-		lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl1,arrBuffer1,colors,gl1.STATIC_DRAW);
-		var flo1 = gl1.getAttribLocation(program,name1);
-		gl1.vertexAttribPointer(flo1,4,number1,false,0,0);
-		gl1.enableVertexAttribArray(flo1);
-		gl1.bindBuffer(arrBuffer1,null);
-		if(texture != null) {
-			var name2 = Main.textureName;
-			var number2 = gl1.FLOAT;
-			var buffer2 = gl1.createBuffer();
-			var arrBuffer2 = gl1.ARRAY_BUFFER;
-			gl1.bindBuffer(arrBuffer2,buffer2);
-			lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl1,arrBuffer2,texture,gl1.STATIC_DRAW);
-			var flo2 = gl1.getAttribLocation(program,name2);
-			gl1.vertexAttribPointer(flo2,2,number2,false,0,0);
-			gl1.enableVertexAttribArray(flo2);
-			gl1.bindBuffer(arrBuffer2,null);
-		}
 	}
 	,uploadVectors: function() {
 		var this1 = this.verts;
@@ -1996,7 +1932,7 @@ Main.prototype = $extend(lime_app_Application.prototype,{
 		if(k == 97) {
 			this.swapAxisModel();
 		}
-		haxe_Log.trace(this.axisModel,{ fileName : "Source/Main.hx", lineNumber : 390, className : "Main", methodName : "onKeyDown"});
+		haxe_Log.trace(this.axisModel,{ fileName : "Source/Main.hx", lineNumber : 385, className : "Main", methodName : "onKeyDown"});
 	}
 	,swapAxisModel: function() {
 		this.sceneTransform = !this.sceneTransform;
@@ -31370,7 +31306,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 130400;
+	this.version = 467842;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";

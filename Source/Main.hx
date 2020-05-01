@@ -179,6 +179,8 @@ class Main extends Application {
                 verts.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.2 ) );
                 var die     = new Die( pen );
                 startEnd  = die.create( stageRadius, stageRadius );
+                sceneModel = axisModel;
+                uploadVectors();
             default:
         }
         start = true;
@@ -190,7 +192,6 @@ class Main extends Application {
         modelDie  = itemModel.updateCalculate( modelDie );
         var trans: Matrix4x3 = modelDie;
         verts.transformRange( trans, startEnd.start, startEnd.end );
-        uploadVectors();
     }
     public override
     function render ( context: RenderContext ): Void {
@@ -265,6 +266,7 @@ class Main extends Application {
         gl.enableVertexAttribArray( flo );
         gl.bindBuffer( arrBuffer, null );
     }
+    /*
     public 
     function reloadVectors(){
         vertices =  cast verts.getArray();
@@ -274,6 +276,7 @@ class Main extends Application {
         passIndicesToShader( gl, indices );
         uploadDataToBuffers( gl, glProgram, vertices, colors );
     }
+    */
     public
     function uploadVectors(){
         vertices =  cast verts.getArray();
@@ -294,15 +297,7 @@ class Main extends Application {
         var arr = ind.getArray();
         return cast arr;
     }
-    /*
-    function updateScene(): Void {
-        var q = DualQuaternion.zero;
-        q  = viewGL.itemModel.updateCalculate( model );
-        var trans: Matrix4x3 = model;
-        verts.transformRange( trans, start, end );
-        uploadVectors();
-    }
-    */
+
     inline
     function clearTriangles(){
         verts = new Float32FlatTriangle(largeEnough);
@@ -389,7 +384,7 @@ class Main extends Application {
         }
         trace( axisModel );
     }
-    var sceneModel: Axis3;
+    var sceneModel: Axis3; // set to 
     var axisModel               = new Axis3();
     var itemModel               = new Axis3();
     var sceneTransform = true;
