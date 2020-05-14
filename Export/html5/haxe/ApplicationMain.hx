@@ -1,6 +1,6 @@
 package;
 
-import Main;
+import trilateral2Lime.app.Main;
 
 @:access(lime.app.Application)
 @:access(lime.system.System)
@@ -21,8 +21,8 @@ import Main;
 		ManifestResources.init(config);
 
 		#if !munit
-		var app = new Main();
-		app.meta.set("build", "5");
+		var app = new trilateral2Lime.app.Main();
+		app.meta.set("build", "6");
 		app.meta.set("company", "Nanjizal");
 		app.meta.set("file", "Trilateral2Lime");
 		app.meta.set("name", "Trilateral2Lime");
@@ -127,7 +127,7 @@ import Main;
 
 		#else
 
-		new Main();
+		new trilateral2Lime.app.Main();
 
 		#end
 	}

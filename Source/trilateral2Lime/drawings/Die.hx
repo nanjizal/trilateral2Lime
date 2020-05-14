@@ -1,4 +1,4 @@
-package trilateral2Lime;
+package trilateral2Lime.drawings;
 import trilateral2.Pen;
 import trilateral2.Shaper;
 import trilateral2.IndexRange;

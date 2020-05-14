@@ -2,7 +2,7 @@
 <project>
 	
 	<meta title="Trilateral2Lime" package="net.nanjizal.trilateral2lime" version="1.0.0" company="Nanjizal" />
-	<app main="Main" path="Export" file="Trilateral2Lime" />
+	<app main="trilateral2Lime.app.Main" path="Export" file="Trilateral2Lime" />
 	
 	<source path="Source" />
 	
